@@ -77,8 +77,8 @@ def time_formatter(milliseconds: int) -> str:
         ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
     return tmp[:-2]
 
-@borg.on(admin_cmd(pattern="download(?: |$)(.*)", outgoing=True))
-@borg.on(sudo_cmd(pattern="download(?: |$)(.*)", allow_sudo=True))
+@borg.on(admin_cmd(pattern="Anuu(?: |$)(.*)", outgoing=True))
+@borg.on(sudo_cmd(pattern="Anuu(?: |$)(.*)", allow_sudo=True))
 async def download(target_file):
     """ For .dl command, download files to the userbot's server. """
     friday = await edit_or_reply(target_file ,"`Processing ...`")
@@ -146,7 +146,7 @@ async def download(target_file):
               #  ).create_task(
                #     progress(d, t, target_file, c_time, "Downloading...")))
         except Exception as e:  # pylint:disable=C0103,W0703
-            await friday.edit(str(e))
+            print(str(e))
         else:
             print("hey hey")
             time.sleep(0.1)
