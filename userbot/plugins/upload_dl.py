@@ -142,16 +142,14 @@ async def download(target_file):
             downloaded_file_name = await target_file.client.download_media(
                 await target_file.get_reply_message(),
                 TEMP_DOWNLOAD_DIRECTORY,
-                progress_callback=lambda d, t: asyncio.get_event_loop(
-                ).create_task(
-                    progress(d, t, target_file, c_time, "Downloading...")))
+             #   progress_callback=lambda d, t: asyncio.get_event_loop(
+              #  ).create_task(
+               #     progress(d, t, target_file, c_time, "Downloading...")))
         except Exception as e:  # pylint:disable=C0103,W0703
             await friday.edit(str(e))
         else:
-            await friday.edit("Downloaded to `{}` successfully !!".format(
-                downloaded_file_name))
-    else:
-        await friday.edit("Reply to a message to download to my local server.")
+            print("hey hey")
+            time.sleep(0.1)
 
 
 @register(pattern=r".uploadir (.*)", outgoing=True)
